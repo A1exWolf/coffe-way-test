@@ -2,17 +2,26 @@
   <div class="project-details">
     <h1>{{ project.name }}</h1>
     <p>Описание: {{ project.description }}</p>
-    <p>Дата окончания: {{ project.dueDate }}</p>
+<!--    <p>Дата окончания: {{ project.dueDate }}</p>-->
+    <p>Дата окончания: <b>{{ currentDate }}</b></p>
     <router-link :to="'/edit-project/' + project.id" class="edit-button">Редактировать</router-link>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import {ref, onMounted, computed} from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const project = ref({});
+
+const currentDate = computed(() => {
+  if (project.value && project.value.dueDate) {
+    const mass = project.value.dueDate.split('-');
+    return `День: ${mass[2]} Месяц: ${mass[1]} Год: ${mass[0]}`;
+  }
+  return 'Загрузка...';
+});
 
 onMounted(() => {
   const projects = JSON.parse(localStorage.getItem('projects') || '[]');
