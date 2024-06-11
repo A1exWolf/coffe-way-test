@@ -56,4 +56,10 @@ a {
 .delete-button:hover {
   background-color: #c0392b;
 }
+
+@media (width < 565px) {
+  .delete-button {
+    margin-left: 10px;
+  }
+}
 </style>

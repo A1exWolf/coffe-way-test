@@ -44,7 +44,6 @@ h1 {
 }
 
 .search-input {
-  //width: calc(100% - 150px);
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -69,9 +68,24 @@ h1 {
 .projects {
   list-style: none;
   padding: 0;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .projects li {
   margin-bottom: 10px;
+}
+
+@media (width < 565px) {
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+  }
+
+  .add-button {
+    margin: 0px 40px;
+    text-align: center;
+  }
 }
 </style>
